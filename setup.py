@@ -51,8 +51,7 @@ setup_requires = [
 install_requires = [
     'Flask-BabelEx>=0.9.3',
     'Flask-Debugtoolbar>=0.10.1',
-    'invenio[{db},{es},base,auth,metadata]~={version}'.format(
-        db=DATABASE, es=ELASTICSEARCH, version=INVENIO_VERSION),
+    "invenio[postgresql,elasticsearch6,base,auth,metadata]>=3.1.0.dev20181106",
 ]
 
 packages = find_packages()
@@ -87,7 +86,10 @@ setup(
         ],
         'invenio_i18n.translations': [
             'messages = cds_books',
-        ]
+        ],
+        'invenio_base.blueprints': [
+            'cds_books = cds_books.views:ping_blueprint',
+        ],
     },
     extras_require=extras_require,
     install_requires=install_requires,

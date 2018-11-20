@@ -8,9 +8,11 @@
 #
 # How to generate this file by running the following commands:
 #
-# pip install -e .
-# pip install pip-tools
-# pip-compile
+-e git+https://github.com/inveniosoftware/invenio-app-ils#egg=invenio-app-ils
+-e git+https://github.com/inveniosoftware/invenio-circulation#egg=invenio-circulation
+-e git+https://github.com/inveniosoftware/invenio-records-editor#egg=invenio-records-editor
+
+-e .
 #
 # You can read more about pip-compile command here:
 # https://github.com/jazzband/pip-tools#example-usage-for-pip-compile
