@@ -56,7 +56,7 @@ export class Importer extends Component {
     }
   };
 
-  handleSubmit = (e, { action }) => {
+  handleSubmit = action => {
     const { provider, mode, file } = this.state;
     let importMode = mode;
     if (action === 'PREVIEW' && mode === 'IMPORT') {
@@ -133,9 +133,9 @@ export class Importer extends Component {
           <Button
             primary
             action="DELETE"
-            onClick={(e, props) => {
+            onClick={() => {
               this.setState({ openModal: false });
-              this.handleSubmit(e, props);
+              this.handleSubmit('DELETE');
             }}
           >
             <Icon name="checkmark" /> Yes
@@ -211,20 +211,14 @@ export class Importer extends Component {
             </Form.Group>
           </Segment>
           <>
-            <Button
-              primary
-              content="Preview"
-              onClick={this.handleSubmit}
-              action="PREVIEW"
-            />
+            <Button primary onClick={() => this.handleSubmit('PREVIEW')} />
             {mode === 'DELETE' ? (
               this.renderModal()
             ) : (
               <Button
                 secondary
                 content="Import"
-                onClick={this.handleSubmit}
-                action="IMPORT"
+                onClick={() => this.handleSubmit('IMPORT')}
               />
             )}
           </>
